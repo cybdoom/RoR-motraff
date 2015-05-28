@@ -1,0 +1,4 @@
+asset 'jquery'
+asset 'jquery-ujs'
+asset 'bootstrap'
+asset 'handlebars'
