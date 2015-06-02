@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-xs-3">
+    <div class="checkbox">
+      Search markets
+    </div>
+  </div>
+  <div class="col-xs-2">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"> Google play
+      </label>
+    </div>
+  </div>
+  <div class="col-xs-2">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"> Apple Store
+      </label>
+    </div>
+  </div>
+  <div class="col-xs-2">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"> Windows
+      </label>
+    </div>
+  </div>
+  <div class="col-xs-3">
+    <div class="checkbox">
+      <label>
+        <input type="checkbox"> BlackBarry
+      </label>
+    </div>
+  </div>
+</div>
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="Search for...">
+  <span class="input-group-btn">
+    <button class="btn btn-default" type="button">Go!</button>
+  </span>
+</div>
+<br>
+<div id="items">
+
+</div>
+<input type="submit" name="commit" value="Add selected" class="btn btn-block btn-primary btn-lg" data-disable-with="Add selected...">
+<script id="entry-template" type="text/x-handlebars-template">
+  {{#each items}}
+  <div class="item well">
+    <div class="body">
+      {{name}}
+    </div>
+  </div>
+  {{/each}}
+</script>
