@@ -33,6 +33,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
 gem 'bower-rails'
+gem 'google_play_search'
+gem 'itunes-search-api'
+gem 'simple_form'
+gem 'wannabe_bool'
+gem 'parallel'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

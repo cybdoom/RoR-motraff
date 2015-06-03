@@ -1,55 +1,37 @@
-<div class="row">
-  <div class="col-xs-3">
-    <div class="checkbox">
-      Search markets
+<%= simple_form_for SearchApps.new, url: quick_search_apps_path, :remote => true, method: :get,
+                    html: {'data-type' => 'json', :multipart => true} do |f| %>
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="checkbox">
+          Search markets
+        </div>
+      </div>
+      <%= f.input :google_play, as: :boolean, wrapper_html: {class: 'col-xs-2 checkbox'} %>
+      <%= f.input :apple_store, as: :boolean, wrapper_html: {class: 'col-xs-2 checkbox'} %>
+      <%= f.input :windows, as: :boolean, wrapper_html: {class: 'col-xs-2 checkbox'}, disabled: true %>
+      <%= f.input :black_berry, as: :boolean, wrapper_html: {class: 'col-xs-2 checkbox'}, disabled: true %>
     </div>
-  </div>
-  <div class="col-xs-2">
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Google play
-      </label>
+    <div class="input-group">
+      <%= f.input :query, wrapper: false, label: false, input_html: {class: 'form-control', placeholder: 'Search for...'} %>
+      <span class="input-group-btn">
+          <%= f.submit 'Go!', class: 'btn btn-default' , data: {'disable-with' => 'Loading...'}%>
+      </span>
     </div>
-  </div>
-  <div class="col-xs-2">
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Apple Store
-      </label>
-    </div>
-  </div>
-  <div class="col-xs-2">
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> Windows
-      </label>
-    </div>
-  </div>
-  <div class="col-xs-3">
-    <div class="checkbox">
-      <label>
-        <input type="checkbox"> BlackBarry
-      </label>
-    </div>
-  </div>
-</div>
-<div class="input-group">
-  <input type="text" class="form-control" placeholder="Search for...">
-  <span class="input-group-btn">
-    <button class="btn btn-default" type="button">Go!</button>
-  </span>
-</div>
+<% end %>
 <br>
-<div id="items">
+<div id="apps">
 
 </div>
 <input type="submit" name="commit" value="Add selected" class="btn btn-block btn-primary btn-lg" data-disable-with="Add selected...">
-<script id="entry-template" type="text/x-handlebars-template">
-  {{#each items}}
-  <div class="item well">
-    <div class="body">
-      {{name}}
-    </div>
-  </div>
+<script id="app-template" type="text/x-handlebars-template">
+  {{#each apps}}
+    <label for="app_{{@index}}" class="app {{store}}">
+      <span class="pull-right">{{store}}</span>
+      <input type="checkbox" class="pull-left" id="app_{{@index}}">
+      <img src="{{logo_url}}" class="app-logo pull-left img-rounded">
+      <h5>{{title}}</h5>
+      <h6>{{publisher}}</h6>
+      <div class="clearfix"></div>
+    </label>
   {{/each}}
 </script>

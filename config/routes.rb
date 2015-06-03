@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'quick#search'
   get 'quick/search' => 'quick#search'
+  get 'quick/search_apps' => 'quick#search_apps'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,3 +1,33 @@
 // Place all the styles related to the Quick controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#new_search_apps {
+  label {
+    padding: 0;
+  }
+  .checkbox {
+    margin-top: 10px;
+  }
+}
+.app {
+  img {
+    width: 60px;
+    margin-right: 10px;
+  }
+  input {
+    margin: 24px 7px 0 0;
+  }
+  .apple_store:after {
+    content: "Новьё!"; /* Добавляемый текст */
+    color: #333; /* Цвет текста */
+    background-color: #fc0; /* Цвет фона */
+    font-size: 90%; /* Размер шрифта */
+    padding: 2px; /* Поля вокруг текста */
+  }
+  margin-bottom: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+  display: block;
+  background: #f9f9f9;
+  border-radius: 6px;
+}
