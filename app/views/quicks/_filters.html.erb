@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Search markets</div>
+  <div class="panel-body">
+
+    <div class="checkbox">
+      <label>
+        <%= filters.check_box :google_play, checked: true %>
+        Google Play
+      </label>
+    </div>
+    <div class="checkbox">
+      <label>
+        <%= filters.check_box :apple_store, checked: true %>
+        Apple Store
+      </label>
+    </div>
+    <div class="checkbox disabled">
+      <label>
+        <%= filters.check_box :windows, disabled: true %>
+        Windows
+      </label>
+    </div>
+    <div class="checkbox disabled">
+      <label>
+        <%= filters.check_box :black_berry, disabled: true %>
+        BlackBerry
+      </label>
+    </div>
+  </div>
+</div>

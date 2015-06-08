@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -14,6 +14,8 @@ gem 'itunes-search-api'
 gem 'simple_form'
 gem 'wannabe_bool'
 gem 'parallel'
+gem 'jquery-rails'
+gem 'handlebars_assets'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

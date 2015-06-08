@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
-  root 'quick#search'
-  get 'quick/search' => 'quick#search'
-  get 'quick/search_apps' => 'quick#search_apps'
+  # root 'quicks#search'
+  root 'landing#show'
+
+  resource :landing, only: [:show]
+  resource :quicks do
+    collection do
+      get :search
+      get :get_access
+      post :search_apps
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

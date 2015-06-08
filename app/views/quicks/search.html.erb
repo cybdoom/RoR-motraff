@@ -1,0 +1,14 @@
+<div class="row clearfix">
+  <%= form_for :search, url: search_apps_quicks_path, remote: true, html: { :'data-type' => 'json', id: 'quicks_search_form' } do |f| %>
+    <div class="col-md-8 column">
+      <div class='row'>
+        <%= render partial: 'quicks/search', object: f %>
+      </div>
+      <br>
+      <div class='row' id="quickContent"></div>
+    </div>
+    <div class="col-md-4 column">
+      <%= render partial: 'quicks/filters', object: f %>
+    </div>
+  <% end %>
+</div>

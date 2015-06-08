@@ -1,0 +1,24 @@
+<table class="table" id='quickSearchResultTable'>
+  <tbody>
+    {{#each apps}}
+      <tr data-id="{{this.id}}">
+        <td class="valign-middle">
+          <input type="checkbox" name="appId[]" id="aaa" value="{{this.id}}" data-type="{{this.store}}">
+        </td>
+        <td class="valign-middle">
+          <img src="{{this.logo_url}}" alt="{{this.title}}" width="64">
+        </td>
+        <td class="valign-middle full-lenght">
+          <h4>
+          <a href="{{this.url}}" target="_blank">{{this.title}}</a>
+          <br>
+          <span class="label label-info">{{this.publisher}}</span>
+          </h4>
+        </td>
+        <td class="valign-middle">
+          {{> quicks/_app_icon}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

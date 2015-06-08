@@ -1,0 +1,7 @@
+<div class="input-group">
+  <%= search.search_field :query, placeholder: 'Search for...', class: 'form-control' %>
+  <span class="input-group-btn">
+    <%= search.submit 'Search', class: 'btn btn-primary' , data: {'disable-with' => 'Loading...'} %>
+    <span class='btn btn-success' id="actionCreateQuickLink">Add Selected</span>
+  </span>
+</div>
