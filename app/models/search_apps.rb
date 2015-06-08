@@ -31,7 +31,7 @@ class SearchApps
 
   def pretty(store, options)
     properties = options[:properties].map {|str| str.split(':')}
-    send("#{store}_search").map do |el|
+    send("#{store}_search").first(4).map do |el|
       properties.map do |property|
         [property.first, el.send(options[:get_method], property.last)]
       end.push(['store', store.to_s]).to_h
