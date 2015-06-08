@@ -13,11 +13,10 @@ class QuicksController < ApplicationController
 
     }
     render json: res
-
   end
 
   def search_apps
-    render json: SearchApps.new(search_apps_params).search
+    render json: Search.new(search_apps_params).perform
   end
 
   private
