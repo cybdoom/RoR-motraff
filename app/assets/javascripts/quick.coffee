@@ -4,6 +4,10 @@ $ =>
     renderContent: (template, context)  ->
       html = HandlebarsTemplates["quicks/#{template}"](context)
       $('#quickContent').html(html)
+      if template == 'create'
+        $('#actionCreateQuickLink').hide()
+      else
+        $('#actionCreateQuickLink').show()
   }
 
   $('#quicks_search_form')
