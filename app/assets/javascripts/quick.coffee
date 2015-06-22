@@ -1,6 +1,7 @@
 $ =>
-  @quickController = {
+  @quickController =
     content: []
+    selectedIds: []
     renderContent: (template, context)  ->
       html = HandlebarsTemplates["quicks/#{template}"](context)
       $('#quickContent').html(html)
@@ -8,7 +9,6 @@ $ =>
         $('#actionCreateQuickLink').hide()
       else
         $('#actionCreateQuickLink').show()
-  }
 
   $('#quicks_search_form')
     .on("ajax:success", (e, data, status, xhr) ->
@@ -35,9 +35,17 @@ $ =>
         return
       $.getJSON '/quicks/get_access', (response)->
         selectedApps = _.filter window.quickController.content, (a)-> _.indexOf(appIds, a.id.toString()) isnt -1
+        window.quickController.selectedApps = selectedApps
+        window.quickController.access = response
         window.quickController.renderContent('create', {apps: selectedApps, access: response})
     )
-    .on('click', '#actionQuickSave', (e)->
+    .on('click', '#actionQuickSave', (e) ->
+      requestObject = {}
+      $.extend(requestObject, window.quickController.access, {apps: JSON.stringify(window.quickController.selectedApps)})
+      $.ajax
+        url: '/quicks'
+        method: 'post'
+        data: requestObject
       alert 'Your link was saved'
       window.quickController.renderContent('items', {apps: window.quickController.content})
     )
