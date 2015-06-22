@@ -34,9 +34,7 @@ $ =>
         alert 'PLease select at least one application from list'
         return
       $.getJSON '/quicks/get_access', (response)->
-        selectedApps = _.filter window.quickController.content, (a)-> _.indexOf(appIds, a.id) isnt -1
-        debugger
-        console.log selectedApps
+        selectedApps = _.filter window.quickController.content, (a)-> _.indexOf(appIds, a.id.toString()) isnt -1
         window.quickController.renderContent('create', {apps: selectedApps, access: response})
     )
     .on('click', '#actionQuickSave', (e)->
