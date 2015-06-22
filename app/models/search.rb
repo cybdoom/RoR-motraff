@@ -6,7 +6,7 @@ class Search
 
   def initialize(args)
     @query = args[:query]
-    @requested_stores = args.slice(*STORES_ADAPTERS.keys).keys
+    @requested_stores = args.select {|k, v| !(STORES_ADAPTERS[k.to_sym].nil? || v.to_i.zero?) }.keys
   end
 
   def perform
