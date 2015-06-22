@@ -1,5 +1,8 @@
 source 'http://rubygems.org'
 
+gem 'mongoid', '~> 4.0.0'
+gem 'email_validator'
+gem 'quiet_assets'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2'
