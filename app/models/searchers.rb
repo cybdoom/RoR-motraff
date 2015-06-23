@@ -28,7 +28,7 @@ module Searchers
 
   class GooglePlayWorker < Worker
     def transformation
-      {id: 'id', url: 'url', logo_url: 'logo_url', title: 'name', publisher: 'developer'}
+      {store_id: 'id', app_url: 'url', logo_url: 'logo_url', title: 'name', publisher: 'developer'}
     end
 
     def do_query
@@ -38,7 +38,7 @@ module Searchers
 
   class AppStoreWorker < Worker
     def transformation
-      {id: 'trackId', url: 'trackViewUrl', logo_url: 'artworkUrl60', title: 'trackName', publisher: 'sellerName'}
+      {store_id: 'trackId', app_url: 'trackViewUrl', logo_url: 'artworkUrl60', title: 'trackName', publisher: 'sellerName'}
     end
 
     def do_query
