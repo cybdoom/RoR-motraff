@@ -1,24 +1,25 @@
 <div class="col-md-8 col-md-offset-2 column" id='quickSearchResultTable'>
-  <tbody>
-    {{#each apps}}
-      <div class="row" data-id="{{this.id}}">
-        <div class="col-md-1 column">
-          <input type="checkbox" name="appId[]" id="aaa" value="{{this.id}}" data-type="{{this.store}}">
-        </div>
-        <div class="col-md-2 column">
-          <img src="{{this.logo_url}}" alt="{{this.title}}" width="64">
-        </div>
-        <div class="col-md-8 column">
-          <h4>
-          <a href="{{this.url}}" target="_blank">{{this.title}}</a>
-          <br>
-          <span class="label label-info">{{this.publisher}}</span>
-          </h4>
-        </div>
-        <div class="valign-middle col-md-1 column">
-          {{> quicks/_app_icon}}
-        </div>
+  {{#each apps}}
+    <div class="row" data-id="{{this.store_id}}">
+      <div class="col-md-1 column">
+        <input type="checkbox" name="appId[]" id="aaa" value="{{this.store_id}}" data-type="{{this.store}}">
       </div>
-    {{/each}}
-  </tbody>
+      <div class="col-md-2 column">
+        <img src="{{this.logo_url}}" alt="{{this.title}}" width="64">
+      </div>
+      <div class="col-md-8 column">
+        <h4>
+        <a href="{{this.app_url}}" target="_blank">{{this.title}}</a>
+        <br>
+        <span class="label label-info">{{this.publisher}}</span>
+        </h4>
+      </div>
+      <div class="valign-middle col-md-1 column">
+        {{> quicks/_app_icon}}
+      </div>
+    </div>
+  {{/each}}
+  <div class="row">
+    <span {{#if isSelectButtonDisabled}}disabled="disabled"{{/if}} class='col-md-12 column btn btn-success' id="actionPrepareQuickLink">Add Selected</span>
+  </div>
 </div>
