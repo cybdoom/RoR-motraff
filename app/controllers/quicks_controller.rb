@@ -3,25 +3,40 @@ class QuicksController < ApplicationController
   end
 
   def create
-    new_link = Link.new access_params
-    new_link.apps = []
-    apps_data = JSON.parse create_quick_link_params[:apps]
-    apps_data.each do |app_data|
-      attrs = apps_data.select {|k| k != 'store' }
-      attrs['market'] = Hash[App::STORES.map.with_index.to_a][apps_data['store'].to_sym]
-      new_link.apps.push App.new(app_data)
+    create_params = create_link_params
+    apps_data = JSON.parse create_params.delete(:apps)
+    @new_link = Link.new create_params
+    @new_link.apps = apps_data.map {|app_data| App.new app_data }
+    saved = @new_link.save
+    response_object = if saved
+      {
+        message: 'Your link was successfully saved',
+        link: @new_link.private_link
+      }
+    else
+      {
+        message: 'Failed to save Your link! Please, try again',
+        errors: @new_link.errors.messages
+      }
     end
-    render json: { created: new_link.save }
+    response_status = saved ? :ok : :bad_request
+
+    render json: response_object, status: response_status
   end
 
   def get_access
-    res = {
-      code: SecureRandom.hex(8),
-      link: "http://motraff.io/#{SecureRandom.hex(16)}",
-      button: "<img src='http://motraff.io/#{SecureRandom.hex(16)}.jpg'>"
+    @new_link = Link.new
+    response_object = {
+      private_code: @new_link.private_code,
+      public_code: @new_link.public_code,
+      public_link: @new_link.public_link,
+      button: @new_link.button
     }
 
-    render json: res
+    render json: response_object
+  end
+
+  def search
   end
 
   def search_apps
@@ -34,14 +49,8 @@ class QuicksController < ApplicationController
     params.require(:search).permit(:query, :google_play, :apple_store, :windows, :black_berry)
   end
 
-  def create_quick_link_params
-    params.permit(:code, :button, :link, :apps)
-  end
+  def create_link_params
 
-  def access_params
-    create_quick_link_params.select {|k| k != 'apps' }
-  end
-
-  def app_params
+    params.require(:link).permit(:private_code, :public_code, :apps)
   end
 end
