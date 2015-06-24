@@ -19,13 +19,13 @@
     {{/each}}
   </div>
   <h3>Access Code</h3>
-  <input type="text" value="{{access.code}}"/>
+  <input type="text" value="{{link.private_code}}"/>
   <h3>Link to publish</h3>
-  <input type="text" value="{{access.link}}"/>
+  <input type="text" value="{{link.public_link}}"/>
   <h3>Button code</h3>
-  <textarea>{{access.button}}</textarea>
+  <textarea>{{link.button}}</textarea>
   <div class="row">
     <span class="btn btn-primary col-md-6 column" id="actionQuickSave">Save</span>
-    <span class="btn btn-default col-md-6 column" id="actionQuickCancel">Reset</span>
+    <span class="btn btn-default col-md-6 column" id="actionQuickCancel">Discard</span>
   </div>
 </div>
